@@ -2,9 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\ContentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ContentRepository;
 
 #[ORM\Entity(repositoryClass: ContentRepository::class)]
 class Content
@@ -21,11 +21,11 @@ class Content
     private ?string $description = null;
 
     #[ORM\Column(nullable: true)]
-    private array $files = [];
+    private ?array $files = [];
 
     #[ORM\ManyToOne(inversedBy: 'contents')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?rowTheme $rowTheme = null;
+    private ?RowTheme $rowTheme = null;
 
     public function getId(): ?int
     {
@@ -56,7 +56,7 @@ class Content
         return $this;
     }
 
-    public function getFiles(): array
+    public function getFiles(): ?array
     {
         return $this->files;
     }
@@ -68,12 +68,12 @@ class Content
         return $this;
     }
 
-    public function getRowTheme(): ?rowTheme
+    public function getRowTheme(): ?RowTheme
     {
         return $this->rowTheme;
     }
 
-    public function setRowTheme(?rowTheme $rowTheme): self
+    public function setRowTheme(?RowTheme $rowTheme): self
     {
         $this->rowTheme = $rowTheme;
 
