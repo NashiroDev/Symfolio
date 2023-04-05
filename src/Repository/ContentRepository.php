@@ -42,7 +42,7 @@ class ContentRepository extends ServiceEntityRepository
     public function getAllOrderByAsc(): bool|array
     {
         return $this->createQueryBuilder('c')
-            ->select('c', 'r.theme')
+            ->select('c', 'r.theme', 'r.slug')
             ->join('c.rowTheme', 'r')
             ->orderBy('r.id', 'ASC')
             ->getQuery()

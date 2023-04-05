@@ -19,8 +19,18 @@ class FrontController extends AbstractController
     {
         $content = $this->contentRepo->getAllOrderByAsc();
 
+        $to_send = [];
+
+        foreach ($content as $sub) {
+            if (isset($to_send[$sub['theme']]) && sizeof($to_send[$sub['theme']]) < 3) {
+                array_push($to_send[$sub['theme']], $sub);
+            } elseif (!isset($to_send[$sub['theme']])) {
+                $to_send[$sub['theme']] = [$sub];
+            }
+        }
+
         return $this->render('Frontend/index.html.twig', [
-            'content' => $content,
+            'content' => $to_send,
         ]);
     }
 
