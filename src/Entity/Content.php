@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use App\Repository\ContentRepository;
 
 #[ORM\Entity(repositoryClass: ContentRepository::class)]
@@ -13,6 +14,10 @@ class Content
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
+    #[ORM\Column(length: 260, unique: true)]
+    #[Gedmo\Slug(fields: ['name'])]
+    private $slug;
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
@@ -78,5 +83,13 @@ class Content
         $this->rowTheme = $rowTheme;
 
         return $this;
+    }
+
+    /**
+     * Get the value of slug
+     */
+    public function getSlug(): ?string
+    {
+        return $this->slug;
     }
 }

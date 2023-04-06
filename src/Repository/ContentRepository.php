@@ -62,6 +62,18 @@ class ContentRepository extends ServiceEntityRepository
         ;
     }
 
+    public function getContentByContentSlug(string $slug): ?Content
+    {
+        return $this->createQueryBuilder('c')
+            // ->select('c', 'r.theme')
+            ->join('c.rowTheme', 'r')
+            ->where('c.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
 //    /**
 //     * @return Content[] Returns an array of Content objects
 //     */

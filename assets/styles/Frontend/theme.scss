@@ -5,6 +5,7 @@
     align-self: center;
     width: 50%;
     margin: 0 auto;
+    margin-top: 2.618em;
     border: 1px solid black;
     margin-bottom: 2.618em;
     border-radius: 15px;
@@ -31,13 +32,19 @@
     background: -webkit-linear-gradient(left, #EDFEFF 0%, #999999 51%, #404040 100%);
     background: linear-gradient(to right, #EDFEFF 0%, #999999 51%, #404040 100%);
 
+    a {
+        width: 28%;
+        margin: 1.618em;
+        text-decoration: none;
+    }
+
     .card-general {
         cursor: pointer;
-        width: 28%;
+        width: 100%;
         overflow: hidden;
         background-color: #EDFEFF;
         margin: 1.618em;
-        border-radius: 32px;
+        border-radius: 22px;
         border: 2px solid #404040;
         transition: all 0.27s ease-in-out;
         -webkit-box-shadow: 5px 3px 15px -1px rgba(49,49,49,0.9); 
@@ -81,10 +88,6 @@
 
         .card-general-title {
             background: #404040;
-            background: -moz-linear-gradient(top, #404040 0%, #999999 51%, #EDFEFF 100%);
-            background: -webkit-linear-gradient(top, #404040 0%, #999999 51%, #EDFEFF 100%);
-            background: linear-gradient(to bottom, #404040 0%, #999999 51%, #EDFEFF 100%);
-            border-bottom: 4px solid #99999900;
 
             h5 {
                 color: #EDFEFF;
@@ -93,9 +96,6 @@
 
         .card-general-body {
             background: #EDFEFF;
-            background: -moz-linear-gradient(top, #EDFEFF 0%, #999999 51%, #404040 100%);
-            background: -webkit-linear-gradient(top, #EDFEFF 0%, #999999 51%, #404040 100%);
-            background: linear-gradient(to bottom, #EDFEFF 0%, #999999 51%, #404040 100%);
             
             p {
                 color: #404040;

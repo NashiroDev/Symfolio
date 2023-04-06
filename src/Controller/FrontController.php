@@ -39,7 +39,21 @@ class FrontController extends AbstractController
     {
         $content = $this->contentRepo->getContentByThemeSlug($slug);
 
+        foreach ($content as $sub) {
+            $sub[0]->setDescription(substr($sub[0]->getDescription(), 0, 160) . '...');
+        }
+
         return $this->render('Frontend/theme.html.twig', [
+            'content' => $content,
+        ]);
+    }
+
+    #[Route('/section/{slug}', name: 'section')]
+    public function section(string $slug): Response
+    {
+        $content = $this->contentRepo->getContentByContentSlug($slug);       
+
+        return $this->render('Frontend/section.html.twig', [
             'content' => $content,
         ]);
     }

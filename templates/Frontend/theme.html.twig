@@ -1,57 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ parent() }}
-    Theme
+	{{ parent() }}
+	{{ content[0].theme }}
 {% endblock %}
 
 {% block body %}
-    <section>
-        <div class="theme-title">
-            <h1>Bloc 1 | Support</h1>
-        </div>
-        <div class="block-card">
-            <div class="card-general">
-                <div class="card-general-title">
-                    <h5>Exemple acti</h5>
-                </div>
-                <div class="card-general-body">
-                    <p>ceci est un exemple d'une partie de description...</p>
-                </div>
-            </div>
-            <div class="card-general">
-                <div class="card-general-title">
-                    <h5>Exemple acti</h5>
-                </div>
-                <div class="card-general-body">
-                    <p>ceci est un exemple d'une partie de description...</p>
-                </div>
-            </div>
-            <div class="card-general">
-                <div class="card-general-title">
-                    <h5>Exemple acti</h5>
-                </div>
-                <div class="card-general-body">
-                    <p>ceci est un exemple d'une partie de description...</p>
-                </div>
-            </div>
-            <div class="card-general">
-                <div class="card-general-title">
-                    <h5>Exemple acti</h5>
-                </div>
-                <div class="card-general-body">
-                    <p>ceci est un exemple d'une partie de description...</p>
-                </div>
-            </div>
-            <div class="card-general">
-                <div class="card-general-title">
-                    <h5>Exemple acti</h5>
-                </div>
-                <div class="card-general-body">
-                    <p>ceci est un exemple d'une partie de description...</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
+	<section>
+		<div class="theme-title">
+			<h1>
+				<i class="bi bi-bookmark-fill"></i>
+				{{ content[0].theme }}</h1>
+		</div>
+		<div class="block-card">
+			{% for item in content %}
+				<a href="/section/{{ item[0].slug }}/">
+					<div class="card-general">
+						<div class="card-general-title">
+							<h5>{{ item[0].name }}</h5>
+						</div>
+						<div class="card-general-body">
+							<p>{{ item[0].description }}</p>
+						</div>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+	</section>
+
 {% endblock %}
