@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	Admin pannel
+{% endblock %}
+
+{% block body %}
+    <section class="container-fluid">
+        <div class="d-flex mx-auto justify-content-center mt-4 gap-4">
+            <a class="btn btn-primary" href="{{ path('user.index') }}">User</a>
+            <a class="btn btn-primary" href="{{ path('user.index') }}">Theme</a>
+            {# <a class="btn btn-primary" href="{{ path('content.index') }}">Content</a> #}
+        </div>
+    </section>
+{% endblock %}

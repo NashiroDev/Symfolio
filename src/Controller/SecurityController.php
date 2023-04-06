@@ -25,7 +25,7 @@ class SecurityController extends AbstractController
         ]);
     }
 
-    #[Route('/register', name: 'register', methods: ['GET', 'POST'])]
+    #[Route('/admin/register', name: 'admin.register', methods: ['GET', 'POST'])]
     public function register(Request $request, UserRepository $rep, UserPasswordHasherInterface $hasher): Response|RedirectResponse
     {
         $user = new User();

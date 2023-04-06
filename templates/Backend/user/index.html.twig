@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	Users
+{% endblock %}
+
+{% block body %}
+	<section class="container-fluid mt-4">
+		<h1 class="mt-4 mx-2">Users</h1>
+		<table class="mt-2 table">
+			<thead class="table-dark">
+				<tr class="active">
+					<th>ID</th>
+					<th>Email</th>
+					<th>Roles</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<td>{{ user.id }}</td>
+						<td>{{ user.email }}</td>
+						<td>
+							{% for item in user.roles %}
+								{{ item }}
+							{% endfor %}
+						</td>
+						<td>
+							<a class="btn btn-primary" href="{{ path('user.edit', {id: user.id}) }}">Edit</a>
+							<a class="btn btn-danger" href="{{ path('user.delete', {id: user.id}) }}">Delete</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="4">No users found.</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a class="btn btn-primary" href="{{ path('admin.register') }}">Add new user</a>
+	</section>
+
+{% endblock %}
