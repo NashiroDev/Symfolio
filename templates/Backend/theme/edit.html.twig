@@ -2,16 +2,15 @@
 
 {% block title %}
 	{{ parent() }}
-	Edit user
+	Edit theme
 {% endblock %}
 {% block body %}
 	<section class="container-fluid mt-4">
 		<div class="p-3 form card w-50 mx-auto">
-			<h1 class="card-title">Edit User</h1>
+			<h1 class="card-title">Edit Theme</h1>
             {{ form_start(form) }}
             <div class="row mx-auto">
-                <div class="col-md-6">{{ form_row(form.email) }}</div>
-                <div class="col-md-6">{{ form_row(form.roles) }}</div>
+                <div class="col-md-6 mx-auto">{{ form_row(form.theme) }}</div>
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Save</button>

@@ -27,9 +27,13 @@
 								{{ item }}
 							{% endfor %}
 						</td>
-						<td>
+						<td class="d-flex gap-2">
 							<a class="btn btn-primary" href="{{ path('user.edit', {id: user.id}) }}">Edit</a>
-							<a class="btn btn-danger" href="{{ path('user.delete', {id: user.id}) }}">Delete</a>
+							<form method="POST" action="{{ path('user.delete', {id: user.id}) }}" onsubmit="return confirm('Êtes-vous sùr de vouloir supprimer cet user ?')">
+								<input type="hidden" name="_method" value="DELETE">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+								<button class="btn btn-danger text-light">Delete</button>
+							</form>
 						</td>
 					</tr>
 				{% else %}
