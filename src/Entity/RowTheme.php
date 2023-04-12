@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\RowThemeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RowThemeRepository::class)]
@@ -14,6 +15,10 @@ class RowTheme
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
+    #[ORM\Column(length: 260, unique: true)]
+    #[Gedmo\Slug(fields: ['theme'])]
+    private $slug;
 
     #[ORM\Column(length: 255)]
     private ?string $theme = null;
@@ -41,6 +46,11 @@ class RowTheme
         $this->theme = $theme;
 
         return $this;
+    }
+    
+    public function getSlug(): ?string
+    {
+        return $this->slug;
     }
 
     /**

@@ -39,6 +39,41 @@ class ContentRepository extends ServiceEntityRepository
         }
     }
 
+    public function getAllOrderByAsc(): bool|array
+    {
+        return $this->createQueryBuilder('c')
+            ->select('c', 'r.theme', 'r.slug')
+            ->join('c.rowTheme', 'r')
+            ->orderBy('r.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getContentByThemeSlug(string $slug): bool|array
+    {
+        return $this->createQueryBuilder('c')
+            ->select('c', 'r.theme')
+            ->join('c.rowTheme', 'r')
+            ->where('r.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getContentByContentSlug(string $slug): ?Content
+    {
+        return $this->createQueryBuilder('c')
+            // ->select('c', 'r.theme')
+            ->join('c.rowTheme', 'r')
+            ->where('c.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
 //    /**
 //     * @return Content[] Returns an array of Content objects
 //     */

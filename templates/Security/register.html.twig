@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+	S'inscrire
+{% endblock %}
+
+{% block body %}
+    <section class="container-fluid mt-4">
+        <div class="card p-3 w-50 mx-auto" style="background-color: #999999;">
+            <h1 class="text-center">Création d'un compte</h1>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <div class="text-center">
+                <button type="submit" class="btn" style="background-color: #404040; color: white">S'inscrire</button>
+            </div>
+            {{ form_end(form) }}
+            <a href="{{ path('login') }}" class="btn btn-link text-start mt-4 text-muted">Déja un compte ? Connectez-vous</a>
+        </div>
+    </section>
+{% endblock %}

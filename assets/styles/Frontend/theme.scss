@@ -1,0 +1,106 @@
+
+.theme-title {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 2.618em;
+    border: 1px solid black;
+    margin-bottom: 2.618em;
+    border-radius: 15px;
+    background: rgba(128, 128, 128, 0.479);
+
+    h1 {
+        color: white;
+    }
+}
+
+.block-card {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 auto;
+    padding: 1.618em;
+    border: 1px solid black;
+    border-radius: 15px;
+    background: #EDFEFF;
+    background: -moz-linear-gradient(left, #EDFEFF 0%, #999999 51%, #404040 100%);
+    background: -webkit-linear-gradient(left, #EDFEFF 0%, #999999 51%, #404040 100%);
+    background: linear-gradient(to right, #EDFEFF 0%, #999999 51%, #404040 100%);
+
+    a {
+        width: 28%;
+        margin: 1.618em;
+        text-decoration: none;
+    }
+
+    .card-general {
+        cursor: pointer;
+        width: 100%;
+        overflow: hidden;
+        background-color: #EDFEFF;
+        margin: 1.618em;
+        border-radius: 22px;
+        border: 2px solid #404040;
+        transition: all 0.27s ease-in-out;
+        -webkit-box-shadow: 5px 3px 15px -1px rgba(49,49,49,0.9); 
+        box-shadow: 5px 3px 15px -1px rgba(49,49,49,0.9);
+
+        .card-general-title {
+            border-bottom: 4px solid #999999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 0 auto;
+
+            h5 {
+                color: #404040;
+                font-size: 15px;
+            }
+        }
+
+        .card-general-body {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            min-height: 5.618em;
+            margin: 0 auto;
+            background-color: #404040;
+            width: 101%;
+
+            p {
+                color: #EDFEFF;
+                margin: 0.15em;
+            }
+        }
+    }
+    .card-general:hover {
+        -moz-transform: translate(-3px, -3px);
+        -webkit-transform: translate(-3px, -3px);
+        -o-transform: translate(-3px, -3px);
+        -ms-transform: translate(-3px, -3px);
+        transform: translate(-3px, -3px);
+
+        .card-general-title {
+            background: #404040;
+
+            h5 {
+                color: #EDFEFF;
+            }
+        }
+
+        .card-general-body {
+            background: #EDFEFF;
+            
+            p {
+                color: #404040;
+            }
+        }
+    }
+    
+}

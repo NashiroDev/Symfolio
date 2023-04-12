@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	Themes
+{% endblock %}
+
+{% block body %}
+	<section class="container-fluid mt-4">
+		<h1 class="mt-4 mx-2">Themes</h1>
+		<table class="mt-2 table">
+			<thead class="table-dark">
+				<tr class="active">
+					<th>ID</th>
+					<th>Theme</th>
+					<th>Slug</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for theme in themes %}
+					<tr>
+						<td>{{ theme.id }}</td>
+						<td>{{ theme.theme }}</td>
+						<td>{{ theme.slug }}</td>
+						<td class="d-flex gap-2">
+							<a class="btn btn-primary" href="{{ path('theme.edit', {id: theme.id}) }}">Edit</a>
+							<form method="POST" action="{{ path('theme.delete', {id: theme.id}) }}" onsubmit="return confirm('Êtes-vous sùr de vouloir supprimer ce theme ?')">
+								<input type="hidden" name="_method" value="DELETE">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ theme.id) }}">
+								<button class="btn btn-danger text-light">Delete</button>
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a class="btn btn-primary" href="{{ path('theme.create') }}">Create</a>
+	</section>
+{% endblock %}
