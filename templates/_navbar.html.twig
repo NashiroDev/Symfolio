@@ -1,13 +1,14 @@
 <nav class="navbar">
 	<div class="navbar-center">
 		<a href="/">Home</a>
-		<a href="#">Contact</a>
+		<a href="/contact">Contact</a>
+		<a href="/links">My links</a>
+		<a href="/files/first/CV_np.pdf" download>CV</a>
 		{% if app.user %}
 			<a href="/logout">Logout</a>
 		{% endif %}
 		{% if is_granted('ROLE_ADMIN') %}
 			<a href="/admin">Admin</a>
 		{% endif %}
-		
 	</div>
 </nav>

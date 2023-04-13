@@ -8,7 +8,9 @@
 {% block body %}
 	<section class="first-section">
 		<div class="title-banner">
-			<h1><i class="bi bi-award"></i> Portfolio</h1>
+			<h1>
+				<i class="bi bi-award"></i>
+				Portfolio</h1>
 			<h3>by Nathan Pauchon</h3>
 		</div>
 		<div class="text-banner">
@@ -16,13 +18,19 @@
 			<h3>Documents relatifs à l'évaluation :</h3>
 			<div class="files-banner">
 				<div class="file">
-					<a href="#"><i class="bi bi-tags-fill"></i> Grille E5</a>
+					<a href="/files/first/tableauSynE4_np.xlsx" download>
+						<i class="bi bi-tags-fill"></i>
+						Grille E4</a>
 				</div>
 				<div class="file">
-					<a href="#"><i class="bi bi-tags-fill"></i> Grille E4</a>
+					<a href="/files/first/A7_E_BTS_predoc.docx" download>
+						<i class="bi bi-tags-fill"></i>
+						Grille E5</a>
 				</div>
 				<div class="file">
-					<a href="#"><i class="bi bi-tags-fill"></i> Autres docs...</a>
+					<a href="#">
+						<i class="bi bi-tags-fill"></i>
+						Autres docs...</a>
 				</div>
 			</div>
 		</div>
@@ -34,7 +42,9 @@
 	<section class="second-section">
 		<div class="container bridge">
 			<div class="title-body">
-				<h2><i class="bi bi-newspaper"></i> Ressources :</h2>
+				<h2>
+					<i class="bi bi-newspaper"></i>
+					Ressources :</h2>
 			</div>
 			<div class="card-cloud">
 				{% for item in content %}
@@ -44,15 +54,15 @@
 						</div>
 						<div class="preview-content">
 							<ul>
-                                {% for names in item %}
-                                    <li>{{ names[0].name }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+								{% for names in item %}
+									<li>{{ names[0].name }}</li>
+								{% endfor %}
+							</ul>
+						</div>
 						<a class="redirect-visit" href="./theme/{{ item[0].slug }}">Aller à la page</a>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-	{% endblock %}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

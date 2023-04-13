@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+    Links
+{% endblock %}
+
+{% block body %}
+    <section class="container-fluid mt-4" style="min-height: 30em">
+        <div class="card p-3 w-50 mx-auto" style="background-color: #999999;">
+            <h1 class="text-center"><i class="bi bi-share-fill"></i> Links</h1>
+            <div class="text-center">
+                <p><i class="bi bi-github"></i> Github : <a href="https://github.com/NashiroDev" target="_blank" style="text-decoration: none; color: whitesmoke;">NashiroDev</a></p>
+                <p><i class="bi bi-linkedin"></i> Linkedin : <a href="https://www.linkedin.com/in/nathanpauchon/" target="_blank" style="text-decoration: none; color: whitesmoke;">Nathan Pauchon</a></p>
+                <p><i class="bi bi-twitter"></i> Twitter : <a href="https://twitter.com/chainshiro" target="_blank" style="text-decoration: none; color: whitesmoke;">@chainshiro</a></p>
+            </div>
+        </div>
+    </section>
+{% endblock %}
