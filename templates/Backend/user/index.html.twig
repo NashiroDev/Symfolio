@@ -8,6 +8,7 @@
 {% block body %}
 	<section class="container-fluid mt-4 small-height">
 		<h1 class="mt-4 mx-2">Users</h1>
+		<a class="btn btn-primary" href="{{ path('admin.register') }}">Add new user</a>
 		<table class="mt-2 table">
 			<thead class="table-dark">
 				<tr class="active">
@@ -27,9 +28,9 @@
 								{{ item }}
 							{% endfor %}
 						</td>
-						<td class="d-flex gap-2">
-							<a class="btn btn-primary" href="{{ path('user.edit', {id: user.id}) }}">Edit</a>
-							<form method="POST" action="{{ path('user.delete', {id: user.id}) }}" onsubmit="return confirm('Êtes-vous sùr de vouloir supprimer cet user ?')">
+						<td>
+							<a class="btn btn-primary d-inline-block" href="{{ path('user.edit', {id: user.id}) }}">Edit</a>
+							<form class="d-inline-block" method="POST" action="{{ path('user.delete', {id: user.id}) }}" onsubmit="return confirm('Êtes-vous sùr de vouloir supprimer cet user ?')">
 								<input type="hidden" name="_method" value="DELETE">
 								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
 								<button class="btn btn-danger text-light">Delete</button>
@@ -43,7 +44,6 @@
 				{% endfor %}
 			</tbody>
 		</table>
-		<a class="btn btn-primary" href="{{ path('admin.register') }}">Add new user</a>
 	</section>
 
 {% endblock %}
