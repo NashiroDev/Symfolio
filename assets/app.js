@@ -8,5 +8,7 @@
 // any CSS you import will output into a single css file (main.scss in this case)
 import './styles/main.scss';
 
+import './js/collectionType';
+
 // start the Stimulus application
 import './bootstrap';

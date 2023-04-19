@@ -13,7 +13,7 @@
             <thead class="table-dark">
                 <tr class="active">
                     <th>ID</th>
-                    <th>tID</th>
+                    <th>Theme</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Files</th>
@@ -24,12 +24,12 @@
                 {% for item in content %}
                     <tr>
                         <td>{{ item.id }}</td>
-                        <td>{{ item.rowTheme.id }}</td>
+                        <td>{{ item.rowTheme.theme }}</td>
                         <td>{{ item.name }}</td>
                         <td>{{ item.description|slice(0, 130) ~ '...' }}</td>
                         <td>
                             {% for file in item.files %}
-                                {{ file }}
+                                {{ file.fileName }}
                             {% endfor %}
                         </td>
                         <td class="d-flex gap-2 mt-2">

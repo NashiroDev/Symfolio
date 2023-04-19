@@ -52,7 +52,7 @@ class ContentController extends AbstractController
             return $this->redirectToRoute('content.index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('Backend/content/create.html.twig', [
+        return $this->render('Backend/content/edit.html.twig', [
             'form' => $form,
             'content' => $content,
         ]);

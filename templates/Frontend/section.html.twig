@@ -1,28 +1,29 @@
 {% extends "base.html.twig" %}
 
 {% block title %}
-    {{ parent() }}
-    Section
+	{{ parent() }}
+	Section
 {% endblock %}
 
 {% block body %}
-    <section>
-        <div class="section-header">
-            <div class="section-name">
-                <h1>{{ content.name }}</h1>
-            </div>
-            <div class="section-desc">
-                <h3>{{ content.rowTheme.theme }}</h3>
-                <p>{{ content.description }}</p>
-            </div>
-        </div>
-        <div class="section-doc">
-            {% if content.files is not empty %}
-                <h3>Documents :</h3>
-            {% endif %}
-            {% for path in content.files %}
-                <a class="button primary-button" href="{{ path }}" download>Télécharger</a>
-            {% endfor %}
-        </div>
-    </section>
+	<section>
+		<div class="section-header">
+			<div class="section-name">
+				<h1>{{ content.name }}</h1>
+			</div>
+			<div class="section-desc">
+				<h3>{{ content.rowTheme.theme }}</h3>
+				<p>{{ content.description }}</p>
+			</div>
+		</div>
+		<div class="section-doc">
+			{% if content.files is not empty %}
+				<h3>Documents :</h3>
+				{% for file in content.files %}
+					<a class="btn btn-primary" href="{{ vich_uploader_asset(file, 'file') }}" download>Télécharger</a>
+				{% endfor %}
+			{% endif %}
+
+		</div>
+	</section>
 {% endblock %}
