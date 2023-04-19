@@ -2,7 +2,7 @@
 
 {% block title %}
     {{ parent() }}
-    section
+    Section
 {% endblock %}
 
 {% block body %}
@@ -17,14 +17,11 @@
             </div>
         </div>
         <div class="section-doc">
+            {% if content.files is not empty %}
+                <h3>Documents :</h3>
+            {% endif %}
             {% for path in content.files %}
-                {% if '.pdf' in path %}
-                    <p>{{ path }}</p>
-                {% elseif '.img' in path %}
-                    <p>{{ path }}</p>
-                {% elseif '.py' in path or '.ps1' in path %}
-                    <p>{{ path }}</p>
-                {% endif %}
+                <a class="button primary-button" href="{{ path }}" download>Télécharger</a>
             {% endfor %}
         </div>
     </section>
