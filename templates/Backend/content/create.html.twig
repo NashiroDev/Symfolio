@@ -6,17 +6,25 @@
 {% endblock %}
 
 {% block body %}
-    <section class="container-fluid mt-4">
+	<section class="container-fluid mt-4 small-height">
 		<div class="p-3 form card w-50 mx-auto">
 			<h1 class="card-title">Create content</h1>
-            {{ form_start(form) }}
-            <div class="row mx-auto">
-                <div class="col-md-6 mx-auto">{{ form_widget(form) }}</div>
-            </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Create</button>
-            </div>
-            {{ form_end(form) }}
+			{{ form_start(form) }}
+			{{ form_row(form.name) }}
+            {{ form_row(form.description) }}
+            {{ form_row(form.rowTheme) }}
+           
+            <button type="button" class="btn btn-primary btn-add-collection" data-collection-holder-class="files-input-list">Ajouter un fichier</button>
+			<ul class="files-input-list mt-4" data-index="{{ form.files|length > 0 ? form.files|last.vars.file + 1 : 0 }}" data-prototype="{{ form_widget(form.files.vars.prototype)|e('html_attr') }}">
+				{% for file in form.files %}
+					<li>{{ form_row(file.file) }}</li>
+				{% endfor %}
+			</ul>
+			<div class="text-center">
+				<button type="submit" class="btn btn-primary">Create</button>
+			</div>
+            {{ form_widget(form._token) }}
+			{{ form_end(form, {render_rest: false}) }}
 		</div>
 	</section>
 {% endblock %}

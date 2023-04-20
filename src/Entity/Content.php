@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -25,12 +27,17 @@ class Content
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?array $files = [];
-
     #[ORM\ManyToOne(inversedBy: 'contents')]
     #[ORM\JoinColumn(nullable: false)]
     private ?RowTheme $rowTheme = null;
+
+    #[ORM\OneToMany(mappedBy: 'content', targetEntity: ContentFile::class, orphanRemoval: true, cascade:['persist'])]
+    private Collection $files;
+
+    public function __construct()
+    {
+        $this->files = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -61,18 +68,6 @@ class Content
         return $this;
     }
 
-    public function getFiles(): ?array
-    {
-        return $this->files;
-    }
-
-    public function setFiles(?array $files): self
-    {
-        $this->files = $files;
-
-        return $this;
-    }
-
     public function getRowTheme(): ?RowTheme
     {
         return $this->rowTheme;
@@ -91,5 +86,35 @@ class Content
     public function getSlug(): ?string
     {
         return $this->slug;
+    }
+
+    /**
+     * @return Collection<int, ContentFile>
+     */
+    public function getFiles(): Collection
+    {
+        return $this->files;
+    }
+
+    public function addFile(ContentFile $file): self
+    {
+        if (!$this->files->contains($file)) {
+            $this->files->add($file);
+            $file->setContent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFile(ContentFile $file): self
+    {
+        if ($this->files->removeElement($file)) {
+            // set the owning side to null (unless already changed)
+            if ($file->getContent() === $this) {
+                $file->setContent(null);
+            }
+        }
+
+        return $this;
     }
 }

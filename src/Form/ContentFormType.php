@@ -10,9 +10,9 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use App\Controller\Backend\DelimitedStringToArrayTransformer;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class ContentFormType extends AbstractType
 {
@@ -36,7 +36,14 @@ class ContentFormType extends AbstractType
                     new NotBlank(),
                 ],
             ])
-            ->add('files', TextType::class, [
+            ->add('files', CollectionType::class, [
+                'entry_type' => ContentFileType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'delete_empty' => true,
+                'prototype' => true,
+                'by_reference' => false,
+                'entry_options' => ['label' => false],
                 'label' => 'Fichiers :',
                 'required' => false,
             ])
@@ -45,10 +52,7 @@ class ContentFormType extends AbstractType
                 'required' => true,
                 'class' => RowTheme::class,
                 'choice_label' => 'theme',
-            ])
-            ->get('files')
-                ->addModelTransformer(new DelimitedStringToArrayTransformer(';'));
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

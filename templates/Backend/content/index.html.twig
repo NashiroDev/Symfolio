@@ -6,14 +6,14 @@
 {% endblock %}
 
 {% block body %}
-    <section class="container-fluid mt-4">
+    <section class="container-fluid mt-4 small-height">
         <h1 class="mt-4 mx-2">Content</h1>
         <a class="btn btn-primary" href="{{ path('content.create') }}">Add new content</a>
         <table class="mt-2 table">
             <thead class="table-dark">
                 <tr class="active">
                     <th>ID</th>
-                    <th>tID</th>
+                    <th>Theme</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Files</th>
@@ -24,17 +24,17 @@
                 {% for item in content %}
                     <tr>
                         <td>{{ item.id }}</td>
-                        <td>{{ item.rowTheme.id }}</td>
+                        <td>{{ item.rowTheme.theme }}</td>
                         <td>{{ item.name }}</td>
                         <td>{{ item.description|slice(0, 130) ~ '...' }}</td>
                         <td>
                             {% for file in item.files %}
-                                {{ file }}
+                                {{ file.fileName }}
                             {% endfor %}
                         </td>
-                        <td class="d-flex gap-2 mt-2">
-                            <a href="{{ path('content.edit', {id: item.id}) }}" class="btn btn-primary">Edit</a>
-                            <form method="POST" action="{{ item.id }}" onsubmit="return confirm('Êtes-vous sùr de vouloir supprimer ce contenu ?')">
+                        <td>
+                            <a href="{{ path('content.edit', {id: item.id}) }}" class="btn btn-primary d-inline-block">Edit</a>
+                            <form class="d-inline-block" method="POST" action="{{ item.id }}" onsubmit="return confirm('Êtes-vous sùr de vouloir supprimer ce contenu ?')">
 								<input type="hidden" name="_method" value="DELETE">
 								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ item.id) }}">
 								<button class="btn btn-danger text-light">Delete</button>

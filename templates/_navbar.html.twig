@@ -1,13 +1,16 @@
 <nav class="navbar">
 	<div class="navbar-center">
 		<a href="/">Home</a>
-		<a href="#">Contact</a>
+		<a href="/contact">Contact</a>
+		<a href="/links">My links</a>
+		<a href="/files/first/CV_np.pdf" download>CV</a>
+		<a class="btn btn-primary lightened" target="_blank" href="http://176.191.98.14:50/">Liblock</a>
+		<a class="btn btn-primary lightened" href="/files/first/ScratScraping.zip" download>ScratScraping</a>
 		{% if app.user %}
 			<a href="/logout">Logout</a>
 		{% endif %}
 		{% if is_granted('ROLE_ADMIN') %}
 			<a href="/admin">Admin</a>
 		{% endif %}
-		
 	</div>
 </nav>

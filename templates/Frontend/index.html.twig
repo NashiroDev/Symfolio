@@ -8,7 +8,9 @@
 {% block body %}
 	<section class="first-section">
 		<div class="title-banner">
-			<h1><i class="bi bi-award"></i> Portfolio</h1>
+			<h1>
+				<i class="bi bi-award"></i>
+				Portfolio</h1>
 			<h3>by Nathan Pauchon</h3>
 		</div>
 		<div class="text-banner">
@@ -16,13 +18,19 @@
 			<h3>Documents relatifs à l'évaluation :</h3>
 			<div class="files-banner">
 				<div class="file">
-					<a href="#"><i class="bi bi-tags-fill"></i> Grille E5</a>
+					<a href="/files/first/tableauSynE4_np.xlsx" download>
+						<i class="bi bi-tags-fill"></i>
+						Grille E4</a>
 				</div>
 				<div class="file">
-					<a href="#"><i class="bi bi-tags-fill"></i> Grille E4</a>
+					<a href="/files/first/A7_E_BTS_liblock.docx" download>
+						<i class="bi bi-tags-fill"></i>
+						E5 - Liblock</a>
 				</div>
 				<div class="file">
-					<a href="#"><i class="bi bi-tags-fill"></i> Autres docs...</a>
+					<a href="/files/first/A7_E_BTS_scratscraping.docx" download>
+						<i class="bi bi-tags-fill"></i>
+						E5 - ScratScraping</a>
 				</div>
 			</div>
 		</div>
@@ -34,7 +42,9 @@
 	<section class="second-section">
 		<div class="container bridge">
 			<div class="title-body">
-				<h2><i class="bi bi-newspaper"></i> Ressources :</h2>
+				<h2>
+					<i class="bi bi-newspaper"></i>
+					Ressources :</h2>
 			</div>
 			<div class="card-cloud">
 				{% for item in content %}
@@ -44,15 +54,27 @@
 						</div>
 						<div class="preview-content">
 							<ul>
-                                {% for names in item %}
-                                    <li>{{ names[0].name }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+								{% for names in item %}
+									<li>{{ names[0].name }}</li>
+								{% endfor %}
+							</ul>
+						</div>
 						<a class="redirect-visit" href="./theme/{{ item[0].slug }}">Aller à la page</a>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-	{% endblock %}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="presentation">
+			<div class="self">
+				<h3>Qui suis-je ?</h3>
+				<p class="self-pres">Je suis actuellement étudiant en alternance en BTS SIO (Services informatiques aux organisations option développement) au CFP Les Charmilles. Mon parcours académique a commencé avec mon baccalauréat ES mention AB obtenu en 2020 au Lycée Pablo Neruda à Saint Martin d'Hères. En 2021, j'ai commencé une Licence Mathématiques-Informatique et Applications à l'Université Grenoble Alpes, mais j'ai dû l'abandonner en partie à cause du confinement et des difficultés liées à ma formation précédente qui étaient inadaptées. Cependant, cela m'a motivé à m'investir davantage dans l'apprentissage du développement informatique. J'ai commencé à apprendre les spécificités du développement, notamment en Python, ainsi que les aspects généraux du milieu informatique. Cette détermination m'a finalement mené à mon alternance actuelle au CFP Les Charmilles et à l'UGA, où je poursuis ma formation en option développement (SLAM). En plus de la formation professionnalisante, j'ai pu apprendre les bases du développement web lors de ma formation actuelle en BTS SIO au CFP Les Charmilles. Au début, cela a été assez difficile à appréhender, mais j'ai rapidement été passionné par l'apprentissage et la maîtrise de ces compétences. Je suis maintenant capable de développer des applications web en utilisant les dernières technologies et je suis toujours motivé à continuer à améliorer mes compétences en développement web.</p>
+			</div>
+			<div class="corp">
+				<h3>Mon entreprise</h3>
+				<p class="corp-pres">L'Université Grenoble Alpes (UGA) est une université publique française située à Grenoble, dans les Alpes. Elle a été fondée en 1339 et est l'une des plus anciennes universités de France. L'UGA est issue de la fusion entre l'université Joseph Fourier, l'université Pierre Mendès France et l'Institut national polytechnique de Grenoble (INP) en 2013. Elle offre une large gamme de programmes d'études en sciences, ingénierie, sciences sociales et humaines, et médecine. Elle compte environ 50 000 étudiants et possède plus de 140 laboratoires de recherche de haut niveau. L'université est reconnue pour son excellence académique et son engagement en faveur de la recherche interdisciplinaire et de la coopération internationale. L'assistance informatique joue un rôle crucial dans une structure comme l'Université Grenoble Alpes, en fournissant un soutien continu aux étudiants, enseignants et chercheurs pour les outils informatiques et les technologies de l'information. Je connais de première main l'importance de ce rôle, car j'ai été technicien de support informatique à l'assistance informatique de l'UGA pendant 2 ans dans le cadre de mon BTS. J'ai eu l'occasion de travailler avec une équipe dédiée et compétente pour résoudre les problèmes informatiques et assurer un fonctionnement sans faille des systèmes informatiques pour la communauté universitaire.</p>
+			</div>
+		</div>
+	</section>
+{% endblock %}
